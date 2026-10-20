@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vintage ribbon microphone">
+  <rect width="64" height="64" rx="14" fill="#3d4fd6"/>
+  <!-- yoke arms with pivot posts -->
+  <path d="M16.5 24 L16.5 33 A15.5 15.5 0 0 0 47.5 33 L47.5 24" fill="none" stroke="#e9b949" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="17" y1="20" x2="23" y2="20" stroke="#e9b949" stroke-width="3" stroke-linecap="round"/>
+  <line x1="41" y1="20" x2="47" y2="20" stroke="#e9b949" stroke-width="3" stroke-linecap="round"/>
+  <!-- stem and weighted base -->
+  <line x1="32" y1="48" x2="32" y2="52" stroke="#e9b949" stroke-width="3.5"/>
+  <rect x="20" y="51.5" width="24" height="5.5" rx="2.75" fill="#e9b949"/>
+  <!-- ribbon head: chrome frame, recessed grille -->
+  <rect x="22" y="4" width="20" height="33" rx="6" fill="#f6f1e7"/>
+  <rect x="25.5" y="8" width="13" height="25" rx="2.5" fill="#2a3299"/>
+  <g stroke="#f6f1e7" stroke-width="1.8" stroke-linecap="round">
+    <line x1="28" y1="13" x2="36" y2="13"/>
+    <line x1="28" y1="18" x2="36" y2="18"/>
+    <line x1="28" y1="23" x2="36" y2="23"/>
+    <line x1="28" y1="28" x2="36" y2="28"/>
+  </g>
+</svg>
