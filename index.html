@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>dB Meter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-zone="idle">
+  <main>
+    <header>
+      <h1>dB Meter</h1>
+      <p class="privacy">Audio is never recorded or sent anywhere. Session summaries stay in this browser tab and are cleared when you close it.</p>
+    </header>
+
+    <p id="status" role="status" hidden></p>
+    <p id="storage-note" class="note" hidden>Results can't be saved in this browser and will be lost on reload.</p>
+
+    <section class="meter" aria-label="Current level">
+      <div class="readout-row">
+        <span id="readout" class="readout">--</span>
+        <span class="readout-side">
+          <span id="unit" class="unit">dB(A)</span>
+          <span class="approx">approx.</span>
+        </span>
+      </div>
+      <p id="zone" class="zone" aria-hidden="true"></p>
+      <p id="zone-live" class="sr-only" aria-live="polite"></p>
+      <div class="bar" role="presentation"><div id="bar-fill" class="bar-fill"></div></div>
+      <div class="bar-scale" aria-hidden="true"><span>30</span><span>70</span><span>85</span><span>120</span></div>
+    </section>
+
+    <section class="stats" aria-label="Session statistics">
+      <div><span class="label">Min</span><span id="stat-min">--</span></div>
+      <div><span class="label">Avg</span><span id="stat-avg">--</span></div>
+      <div><span class="label">Max</span><span id="stat-max">--</span></div>
+      <div><span class="label">Peak</span><span id="stat-peak">--</span></div>
+      <div><span class="label">Time</span><span id="elapsed">0:00</span></div>
+    </section>
+
+    <canvas id="graph" aria-label="Level over the last 60 seconds" role="img"></canvas>
+
+    <section class="controls" aria-label="Session controls">
+      <label class="field">
+        <span class="label">Session name (optional)</span>
+        <input id="session-name" type="text" maxlength="40" placeholder="e.g. Kitchen blender" autocomplete="off">
+      </label>
+      <div class="buttons">
+        <button id="start" type="button" class="primary">Start</button>
+        <button id="discard" type="button" class="secondary" hidden>Discard session</button>
+      </div>
+
+      <div id="settings" class="settings">
+        <fieldset class="segmented">
+          <legend>Weighting</legend>
+          <label><input type="radio" name="weighting" value="A" checked><span>A</span></label>
+          <label><input type="radio" name="weighting" value="Z"><span>Z (flat)</span></label>
+        </fieldset>
+        <fieldset class="segmented">
+          <legend>Response</legend>
+          <label><input type="radio" name="speed" value="fast" checked><span>Fast</span></label>
+          <label><input type="radio" name="speed" value="slow"><span>Slow</span></label>
+        </fieldset>
+        <details>
+          <summary>Calibration</summary>
+          <p class="note">Phone microphones vary. Adjust until the reading matches a reference meter. Locked while a session runs.</p>
+          <label class="field">
+            <span class="label">Offset <output id="offset-value">+94 dB</output></span>
+            <input id="offset" type="range" min="60" max="130" step="1" value="94">
+          </label>
+        </details>
+      </div>
+    </section>
+
+    <section class="sessions" aria-label="Saved sessions">
+      <div class="sessions-head">
+        <h2>Sessions by highest level</h2>
+        <button id="clear-all" type="button" class="secondary" hidden>Clear all</button>
+      </div>
+      <p id="empty" class="note">No sessions yet. Start one to see it here.</p>
+      <ol id="session-list" class="session-list"></ol>
+      <p id="announce" class="sr-only" aria-live="polite"></p>
+    </section>
+
+    <footer>
+      <p class="note">Readings are approximate and not suitable for occupational noise or safety compliance.</p>
+    </footer>
+  </main>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
